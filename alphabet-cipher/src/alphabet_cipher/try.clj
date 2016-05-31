@@ -1,9 +1,9 @@
 (def alphabet "abcdefghijklmnopqrstuvwxyz")
 
+(defn circle-shift
+  "Сдвигаем первый символ строки в конец"
+  [s]
+  (apply str(concat (rest s) [(first s)]))
+  )
 
-(seq alphabet)
-
-(concat (rest alphabet) [(first alphabet)])
-
-;; let([alphabet "abcdefghijklmnopqrstuvwxyz"]
-;;     (concat (rest alphabet) [(first alphabet)]))
+(circle-shift alphabet)
