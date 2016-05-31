@@ -1,2 +1,9 @@
 (def alphabet "abcdefghijklmnopqrstuvwxyz")
-(str alphabet)
+
+
+(seq alphabet)
+
+(concat (rest alphabet) [(first alphabet)])
+
+;; let([alphabet "abcdefghijklmnopqrstuvwxyz"]
+;;     (concat (rest alphabet) [(first alphabet)]))
