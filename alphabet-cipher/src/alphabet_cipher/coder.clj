@@ -56,7 +56,22 @@
 (= (get-keyword-letter 0 "scones") \s)
 (= (get-keyword-letter 7 "scones") \c)
 
+;; todo
+;; Есть символ ключевого слова.
+;; Определяем его номер в алфавите
+;; Столько раз вызываем circle-shift
+;; Определяем номер в алфавите символа исходного сообщения
+;; Получаем по этому номеру символ в сдвинутом алфавите
 
+(defn get-index-in-alphabet
+  "Получаем индекс символа в алфавите"
+  [c]
+  )
+
+
+
+(= (get-index-in-alphabet \a) 0)
+(= (get-index-in-alphabet \z) 25)
 ;; (= (get-pos-in-keyword 1 6) 1)
 ;; (= (get-pos-in-keyword 2 6) 2)
 ;; (= (get-pos-in-keyword 6 6) 6)
