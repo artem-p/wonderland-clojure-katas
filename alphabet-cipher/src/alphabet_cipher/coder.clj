@@ -66,12 +66,27 @@
 (defn get-index-in-alphabet
   "Получаем индекс символа в алфавите"
   [c]
+  (.indexOf [\a \b \c \d \e \f \g \h \i \j \k \l \m \n \o \p \q \r \s \t \u \v \w \x \y \z] c)
   )
-
-
 
 (= (get-index-in-alphabet \a) 0)
 (= (get-index-in-alphabet \z) 25)
+
+(defn get-shifted-alphabet-for-symbol
+  "Получаем сдвинутый алфавит для символа"
+  [c]
+  (take (+ (get-index-in-alphabet c) 1) (iterate circle-shift alphabet)))
+
+(get-shifted-alphabet-for-symbol \a)
+
+
+(= (get-shifted-alphabet-for-symbol \a) [\a \b \c \d \e \f \g \h \i \j \k \l \m \n \o \p \q \r \s \t \u \v \w \x \y \z])
+(= (get-shifted-alphabet-for-symbol \z) [\z \a \b \c \d \e \f \g \h \i \j \k \l \m \n \o \p \q \r \s \t \u \v \w \x \y])
+
+;; todo сделать, чтоб функция работала
+
+
+
 ;; (= (get-pos-in-keyword 1 6) 1)
 ;; (= (get-pos-in-keyword 2 6) 2)
 ;; (= (get-pos-in-keyword 6 6) 6)
