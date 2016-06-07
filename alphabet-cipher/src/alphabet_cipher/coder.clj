@@ -91,6 +91,8 @@
 ;; Определяем номер в алфавите символа исходного сообщения
 ;; Получаем по этому номеру символ в сдвинутом алфавите
 
+
+(apply str (repeat (count "scones") "scones"))
 ;; (= (get-pos-in-keyword 1 6) 1)
 ;; (= (get-pos-in-keyword 2 6) 2)
 ;; (= (get-pos-in-keyword 6 6) 6)
