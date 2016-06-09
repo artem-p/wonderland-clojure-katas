@@ -92,6 +92,11 @@
 ;; Получаем по этому номеру символ в сдвинутом алфавите
 
 
+(defn get_keyword_string
+  "Получаем строку с повторяющимся ключевым совом такой же длины, как исходное сообщение"
+  [message key-word]
+
+  )
 (apply str (repeat (count "scones") "scones"))
 ;; (= (get-pos-in-keyword 1 6) 1)
 ;; (= (get-pos-in-keyword 2 6) 2)
@@ -99,4 +104,3 @@
 ;; (= (get-pos-in-keyword 7 6) 1)
 ;; (= (get-pos-in-keyword 9 6) 3)
 ;; (= (get-pos-in-keyword 14 6) 2)
-; todo еще проверки
