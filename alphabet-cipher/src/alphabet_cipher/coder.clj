@@ -43,18 +43,18 @@
   (if (< index-in-message keyword-len) index-in-message (get-pos-in-keyword (- index-in-message keyword-len) keyword-len)))
 
 
-(defn get-keyword-letter
-  "Получаем букву ключевого слова по индексу символа сообщения"
-  [index-in-message key-word]
-  (get key-word (get-pos-in-keyword index-in-message (count key-word)))
-  )
+;; (defn get-keyword-letter
+;;   "Получаем букву ключевого слова по индексу символа сообщения"
+;;   [index-in-message key-word]
+;;   (get key-word (get-pos-in-keyword index-in-message (count key-word)))
+;;   )
 
-(= (get-keyword-letter 1 "abc") \b)
-(= (get-keyword-letter 2 "abc") \c)
-(= (get-keyword-letter 3 "abc") \a)
+;; (= (get-keyword-letter 1 "abc") \b)
+;; (= (get-keyword-letter 2 "abc") \c)
+;; (= (get-keyword-letter 3 "abc") \a)
 
-(= (get-keyword-letter 0 "scones") \s)
-(= (get-keyword-letter 7 "scones") \c)
+;; (= (get-keyword-letter 0 "scones") \s)
+;; (= (get-keyword-letter 7 "scones") \c)
 
 
 (defn get-index-in-alphabet
@@ -104,3 +104,9 @@
 ( =(get-keyword-string "messageme" "keyword"), "keywordke")
 ( =(get-keyword-string "messageme" "abc"), "abcabcabc")
 ( =(get-keyword-string "short" "longer"), "longe")
+
+(defn encode-by-symbol
+  "Кодируем один символ по символу исходного сообщения и символу ключевого слова"
+  [message-symbol keyword-symbol]
+
+  )
