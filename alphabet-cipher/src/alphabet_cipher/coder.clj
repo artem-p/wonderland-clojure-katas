@@ -92,15 +92,15 @@
 ;; Получаем по этому номеру символ в сдвинутом алфавите
 
 
-(defn get_keyword_string
-  "Получаем строку с повторяющимся ключевым совом такой же длины, как исходное сообщение"
+(defn get-keyword-string
+  "Получаем строку с повторяющимся ключевым словом такой же длины, как исходное сообщение
+  Вначале повторяем его столько раз, чтобы было точно больше или равно длине сообщения. Например столько,
+  сколько символов в сообщении. Потоб обрезаем"
   [message key-word]
-
+  (subs (apply str (repeat(count message) key-word)) 0 (count message))
   )
-(apply str (repeat (count "scones") "scones"))
-;; (= (get-pos-in-keyword 1 6) 1)
-;; (= (get-pos-in-keyword 2 6) 2)
-;; (= (get-pos-in-keyword 6 6) 6)
-;; (= (get-pos-in-keyword 7 6) 1)
-;; (= (get-pos-in-keyword 9 6) 3)
-;; (= (get-pos-in-keyword 14 6) 2)
+
+( =(get-keyword-string "message" "keyword"), "keyword")
+( =(get-keyword-string "messageme" "keyword"), "keywordke")
+( =(get-keyword-string "messageme" "abc"), "abcabcabc")
+( =(get-keyword-string "short" "longer"), "longe")
