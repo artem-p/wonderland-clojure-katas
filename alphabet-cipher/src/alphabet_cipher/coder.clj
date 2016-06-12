@@ -80,3 +80,16 @@
 )
 
 (encode "scones" "meetmebythetree")
+
+(defn decode-by-symbol
+  "Декодируем один символ по символу сообщения и символу ключевого слова"
+  [message-symbol keyword-symbol]
+  ;; Получаем сдвинутый алфавит для символа ключевого слова
+  ;; В нем находим символ сообщения, получаем его индекс
+  ;; Берем символ из алфавита с этим индексом - будет раскодированный символ
+  (get alphabet (.indexOf (get-shifted-alphabet-for-symbol keyword-symbol) message-symbol))
+  )
+
+(= (decode-by-symbol \e \s) \m)
+(= (decode-by-symbol \w \e) \s)
+(= (decode-by-symbol \s \e) \o)
