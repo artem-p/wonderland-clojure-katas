@@ -1,8 +1,5 @@
 (ns alphabet-cipher.coder)
 
-(defn decode [keyword message]
-  "decodeme")
-
 (defn decipher [cipher message]
   "decypherme")
 
@@ -93,3 +90,9 @@
 (= (decode-by-symbol \e \s) \m)
 (= (decode-by-symbol \w \e) \s)
 (= (decode-by-symbol \s \e) \o)
+
+(defn decode [key-word message]
+  (apply str (map decode-by-symbol (seq message) (seq (get-keyword-string message key-word))))
+  )
+
+(decode "scones" "egsgqwtahuiljgs")
