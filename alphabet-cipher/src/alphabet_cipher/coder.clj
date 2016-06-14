@@ -34,7 +34,6 @@
   (last (take (+ (get-index-in-alphabet c) 1) (iterate circle-shift alphabet))))
 
 
-(last (take 10 (iterate circle-shift alphabet)))
 (get-shifted-alphabet-for-symbol \a)
 
 
@@ -54,7 +53,7 @@
 ( =(get-keyword-string "messageme" "abc"), "abcabcabc")
 ( =(get-keyword-string "short" "longer"), "longe")
 
-(defn encode-by-symbol
+(defn encode-single
   "Кодируем один символ по символу исходного сообщения и символу ключевого слова"
   ;; Есть символ ключевого слова.
   ;; Определяем его номер в алфавите
@@ -73,12 +72,12 @@
 (defn encode [key-word message]
   ;; Получаем последовательность ключевого слова sconessconesscone
   ;; Делаем map по двум последовательностям
-  (apply str (map encode-by-symbol (seq message) (seq (get-keyword-string message key-word))))
+  (apply str (map encode-single (seq message) (seq (get-keyword-string message key-word))))
 )
 
 (encode "scones" "meetmebythetree")
 
-(defn decode-by-symbol
+(defn decode-single
   "Декодируем один символ по символу сообщения и символу ключевого слова"
   [message-symbol keyword-symbol]
   ;; Получаем сдвинутый алфавит для символа ключевого слова
@@ -87,12 +86,30 @@
   (get alphabet (.indexOf (get-shifted-alphabet-for-symbol keyword-symbol) message-symbol))
   )
 
-(= (decode-by-symbol \e \s) \m)
-(= (decode-by-symbol \w \e) \s)
-(= (decode-by-symbol \s \e) \o)
+(= (decode-single \e \s) \m)
+(= (decode-single \w \e) \s)
+(= (decode-single \s \e) \o)
 
 (defn decode [key-word message]
-  (apply str (map decode-by-symbol (seq message) (seq (get-keyword-string message key-word))))
+  (apply str (map decode-single (seq message) (seq (get-keyword-string message key-word))))
   )
 
 (decode "scones" "egsgqwtahuiljgs")
+
+(defn decipher-single
+  ;; Это как decode, только меняем местами аргументы
+  [message-symbol cipher-symbol]
+  (decode-single cipher-symbol message-symbol))
+
+(= (decipher-single \m \e) \s)
+(= (decipher-single \e \g) \c)
+(= (decipher-single \e \s) \o)
+
+(defn get-repeated-keyword
+  "Повторяющееся ключевое слово sconessconessco"
+  [cipher message]
+  (apply str (map decipher-single (seq message) (seq cipher)))
+
+  )
+
+(= (get-repeated-keyword "egsgqwtahuiljgs" "meetmebythetree") "sconessconessco")
